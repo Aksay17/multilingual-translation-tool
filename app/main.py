@@ -3,12 +3,19 @@
 # model_name: you specify the model here.
 # it calls translate() and prints both the original and translated versions.
 from translator import translate
+from languages import get_model_name
 
 if __name__ == "__main__":
+    source_language = "english"
+    target_language = "italian"
     input_text = "Hello, how are you today?"
-    model_name = "Helsinki-NLP/opus-mt-en-de"  # English to German
 
-    translated_text = translate(input_text, model_name)
+    try:
+        model_name = get_model_name(source_language, target_language)
+        translated_text = translate(input_text, model_name)
 
-    print("Original:", input_text)
-    print("Translated:", translated_text if translated_text else "⚠️ No translation output")
+        print("Original:", input_text)
+        print("Translated:", translated_text if translated_text else "⚠️ No translation output")
+
+    except ValueError as e:
+        print("⚠️", e)
