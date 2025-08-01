@@ -3,33 +3,31 @@
 # model_name: you specify the model here.
 # it calls translate() and prints both the original and translated versions.
 # main.py
-import argparse
-from translator import translate
 from languages import LANGUAGE_CODES
+from translator import translate
+
+def choose_language(prompt):
+    print(prompt)
+    for i, lang in enumerate(LANGUAGE_CODES.keys(), 1):
+        print(f"{i}. {lang.capitalize()}")
+    choice = int(input("Enter number: "))
+    lang_name = list(LANGUAGE_CODES.keys())[choice - 1]
+    return LANGUAGE_CODES[lang_name]
 
 def main():
-    parser = argparse.ArgumentParser(description="Multilingual Translation Tool")
-    parser.add_argument("-s", "--source", type=str, required=True, help="Source language (e.g. english)")
-    parser.add_argument("-t", "--target", type=str, required=True, help="Target language (e.g. german)")
-    parser.add_argument("-i", "--input", type=str, required=True, help="Text to translate")
-
-    args = parser.parse_args()
-
-    source_language = args.source.lower()
-    target_language = args.target.lower()
-    input_text = args.input
-
-    if source_language not in LANGUAGE_CODES or target_language not in LANGUAGE_CODES:
-        print(f"Supported languages are: {', '.join(LANGUAGE_CODES.keys())}")
-        return
-
-    source_code = LANGUAGE_CODES[source_language]
-    target_code = LANGUAGE_CODES[target_language]
+    print("Welcome to Multilingual Translation CLI!")
+    
+    source_code = choose_language("Select source language:")
+    target_code = choose_language("Select target language:")
+    
+    text = input("Enter text to translate: ")
+    
     model_name = f"Helsinki-NLP/opus-mt-{source_code}-{target_code}"
-
-    translated_text = translate(input_text, model_name)
-    print(f"Original: {input_text}")
-    print(f"Translated: {translated_text}")
+    
+    print(f"Translating using model: {model_name} ...")
+    
+    translated_text = translate(text, model_name)
+    print(f"Translated text:\n{translated_text}")
 
 if __name__ == "__main__":
     main()

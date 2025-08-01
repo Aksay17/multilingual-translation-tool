@@ -2,12 +2,17 @@
 # Provides a function to get model names (e.g., English to German)
 
 # Dictionary mapping language names to codes used by Helsinki-NLP
+# languages.py
+
+# Dictionary mapping language names to codes used by Helsinki-NLP
 LANGUAGE_CODES = {
-     "english": "en",
+    "english": "en",
     "german": "de",
     "french": "fr",
     "spanish": "es",
-    "italian": "it"
+    "italian": "it",
+    "portuguese": "pt",
+    "russian": "ru"
 }
 
 def get_model_name(source_lang: str, target_lang: str) -> str:
