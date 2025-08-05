@@ -11,7 +11,6 @@ LANGUAGE_CODES = {
     "french": "fr",
     "spanish": "es",
     "italian": "it",
-    "portuguese": "pt",
     "russian": "ru"
 }
 
