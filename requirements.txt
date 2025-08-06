@@ -1,6 +1,4 @@
+flask
 transformers
 torch
-sentencepiece
-flask          
-pandas
-pyyaml
+symspellpy
