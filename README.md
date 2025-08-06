@@ -47,14 +47,22 @@ Enter the source language, target language, and text to translate. The app prepr
 ## Project Structure 
 .
 ├── app.py                  # Flask web app
+
 ├── languages.py            # Language codes and model name generation
+
 ├── preprocessing.py        # Text preprocessing: contraction expansion & spell correction
+
 ├── translator.py           # Translation functions using Hugging Face MarianMT
+
 ├── resources/              # Frequency dictionaries for SymSpell spell correction
+
 ├── templates/
 │   └── index.html          # Web UI template (Flask)
+
 ├── contractions_dict.py    # English contractions dictionary
+
 ├── requirements.txt        # Python dependencies
+
 └── README.md
 
 ## Notes
