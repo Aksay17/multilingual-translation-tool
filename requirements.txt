@@ -1,6 +1,6 @@
 transformers
 torch
 sentencepiece
-flask            # or streamlit
+flask          
 pandas
 pyyaml
